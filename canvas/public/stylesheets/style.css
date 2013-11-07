@@ -1,0 +1,40 @@
+body {
+ background-image: url("../images/bg-noise-tile.png");
+ text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.container{
+	width:980px;
+}
+.form-login .login-header{
+	height: 35px;
+	background: #fafafa;
+	background: -moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#e9e9e9));
+	background: -webkit-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+	background: -o-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+	background: -ms-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+	background: linear-gradient(to bottom, #fafafa 0%,#e9e9e9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#e9e9e9',GradientType=0 );
+	border-bottom: 1px solid #c9c9c9;
+	text-align: center;
+	color: #353535;
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 15px;
+	margin-bottom:15px;
+}
+.form-login{
+	background:#fff;
+	margin:0;
+	border:1px solid #ddd;
+	margin-top:200px;
+	margin-bottom:200px;
+	padding-bottom:20px;
+}
+.form-login input{
+	height:40px;
+}
+.form-login .forget{
+	color:#b2b2b2;
+}

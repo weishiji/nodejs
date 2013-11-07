@@ -1,0 +1,11 @@
+# phpstorm
+.idea/
+
+# editor temp file
+*.tmp
+*.swp
+*.orig
+*~
+*/node_modules/
+
+.project

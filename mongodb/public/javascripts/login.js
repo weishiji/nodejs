@@ -1,0 +1,6 @@
+weishiji.LOGIN = (function(){
+
+	return {
+		
+	}
+})()

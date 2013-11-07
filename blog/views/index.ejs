@@ -1,0 +1,200 @@
+<%- include header %>
+	<p><%= username %></p>
+	<div class="pagination offset11">
+	  <ul>
+	    <li><a href="#">«</a></li>
+	    <li><a href="#">»</a></li>
+	  </ul>
+	</div>
+	<div id="slidebox">
+		<ul class="nav">
+			<li>
+				<p><a href="javascript:void(0);">liu xiao guang</a>agree your friends request</p>
+				<label class="checkbox inline">
+					<input type="checkbox"><p>liu xiao guang</p>
+				</label>
+				<label class="checkbox inline">
+					<input type="checkbox"><p>liu xiao guang</p>
+				</label>
+				<label class="checkbox inline">
+					<input type="checkbox"><p>liu xiao guang</p>
+				</label>
+				<label class="checkbox inline">
+					<input type="checkbox"><p>liu xiao guang</p>
+				</label>
+				<label class="checkbox inline">
+					<input type="checkbox"><p>liu xiao guang</p>
+				</label>
+				<button class="btn btn-primary">fen zu</button>
+				<button class="btn">cancel</button>
+			</li>
+			<li>two</li>
+			<li>three</li>
+		</ul>
+	</div>
+	<div>
+		<ul class="boxlist nav" id="leftbox"></ul>
+		<div class="lrbutton">
+			<button id="toright" class="btn btn-primary">«</button>
+			<button id="toleft" class="btn btn-danger">»</button>
+		</div>
+		<ul class="boxlist nav" id="rightbox"></ul>	
+	</div>
+<%- include footer %>
+<script type="text/javascript">
+	$(document).ready(function(){
+		handOver.init({
+			"leftbox" : $("#leftbox"),
+			"toleft" : $("#toleft"),
+			"rightbox" : $("#rightbox"),
+			"toright" : $("#toright")
+			
+		},{
+			"leftData" : [{"name" : "liu"},{"name" : "xiao"},{"name" : "guang"},{"name" : "chai"},{"name" : "jie"},{"name" : "xiu"}],
+			"rightData" : [{"name" : "yu"},{"name" : "song"},{"name" : "kang"}]
+		})
+	})
+	var handOver = window.handOver || (function(){
+		//the function of extend;
+		function extend(sub,sup){
+			function temp(){};
+			temp.prototype=sup.prototype;
+			sub.prototype=new temp();
+			sub.constructor=sub;
+		}
+		var leftArr = []
+		var tempLeft = []
+		var rightArr = []
+		var tempRight = []
+		var elemJson
+
+		var handOverObject = (function(){
+			function handOverObject(){
+			}
+			handOverObject.prototype.createElem = function(){
+				this.li = $("<li/>",{
+					"class" : "",
+				})
+				this.li.a = $("<a/>",{
+					html : this.data.name
+				}).appendTo(this.li)
+				return this.li
+			}
+			handOverObject.prototype.updatetempArr = function(){
+
+			}
+			handOverObject.prototype.selectObject = function(arr,tempArr){
+				var that = this
+				for(var i=0;i<arr.length;i++){
+					var temp = arr[i]
+					if(temp === that){
+						tempArr.push(temp)
+						arr.splice(i,1)
+						that.selectoff(arr)
+						that.selecton(tempArr)
+						return
+					}
+				}
+				for(var j=0;j<tempArr.length;j++){
+					var temp = tempArr[j]
+					if(that === temp){
+						arr.push(temp)
+						tempArr.splice(j,1)
+						break
+					}
+				}
+				that.selectoff(arr)
+				that.selecton(tempArr)
+			}
+			handOverObject.prototype.selectoff = function(arr){
+				var that = this
+				console.log(arr)
+				for(var i in arr){
+					var temp = arr[i]
+					temp.li.a.css({"background" : "none"})
+				}
+			}
+			handOverObject.prototype.selecton = function(tempArr){
+				var that = this
+				for(var j in tempArr){
+					var temp = tempArr[j]
+					temp.li.a.css({"background" : "#9fdbff"})
+				}
+			}
+			handOverObject.prototype.remove = function(){
+				var that = this
+				that.li.remove()
+			}
+			return handOverObject
+		})()
+		
+
+		var leftObject = (function(){
+			function leftObject(data){
+				this.data = data
+				this.init()
+			}
+			extend(leftObject,handOverObject)
+			leftObject.prototype.init = function(){
+				elemJson.leftbox.append(this.createElem())
+				this.bindEvt()
+			}
+			leftObject.prototype.bindEvt = function(){
+				var that = this
+				that.li.bind("click",function(){
+					that.selectObject(leftArr,tempLeft)
+				})
+
+			}
+			return leftObject
+		})()
+
+		var rightObject = (function(){
+			function rightObject(data){
+				this.data = data
+				this.init()
+			}
+			extend(rightObject,handOverObject)
+			rightObject.prototype.init = function(){
+				elemJson.rightbox.append(this.createElem())
+				this.bindEvt()
+			}
+			rightObject.prototype.bindEvt = function(){
+				var that =this
+				that.li.bind("click",function(){
+					that.selectObject(rightArr,tempRight)
+				})
+			}
+			return rightObject
+		})()
+		return {
+			"init" : function(elem,data){
+				elemJson = elem
+				for(var i in data.leftData){
+					var temp = data.leftData[i]
+					leftArr.push(new leftObject(temp))
+				}
+				for(var j in data.rightData){
+					var temp = data.rightData[j]
+					rightArr.push(new rightObject(temp))
+				}
+				elemJson.toleft.bind("click",function(){
+					for(var i in tempLeft){
+						var temp = tempLeft[i]
+						temp.remove()
+						rightArr.push(new rightObject(temp.data))
+					}
+					tempLeft = []
+				})
+				elemJson.toright.bind("click",function(){
+					for(var i in tempRight){
+						var temp = tempRight[i]
+						temp.remove()
+						leftArr.push(new leftObject(temp.data))
+					}
+					tempRight = []
+				})
+			}
+		}
+	})()
+</script>

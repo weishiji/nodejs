@@ -1,0 +1,111 @@
+.box{
+	display: block;
+	padding: 8.5px;
+	margin: 0 0 9px;
+	font-size: 12px;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background-color:#fff;
+	position:relative;
+}
+.avatar {
+	width: 48px;
+	height: 48px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.avatar-small{
+	width:38px;
+	height:38px;
+}
+.box div.hr {
+	width: 100%;
+	position: absolute;
+	top: 60px;
+	left: 0;
+}
+div.hr span.arrow_box{
+	display: block;
+	border-bottom: none;
+}
+div.hr span.arrow_box:after,
+div.hr span.arrow_box:before{
+	left:68px;
+}
+.arrow_box {
+	position: relative;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.arrow_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #fff;
+	border-width: 10px;
+	left: 50%;
+	margin-left: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(221, 221, 221, 0);
+	border-bottom-color: #ddd;
+	border-width: 11px;
+	left: 50%;
+	margin-left: -11px;
+}
+.post-header, .post-image, .post-btn, .post-reply, .post-addFriend, .post-btn p{
+	margin-bottom:8.5px;
+}
+.post-content, .post-btn, .post-reply, .post-image{
+	border-bottom:1px solid #ddd;
+}
+.post-reply, .post-form,{
+	padding:8.5px 0px;
+}
+.post-reply .ava{
+	display:inline-block;
+	margin-right:8.5px;
+}
+.placeholding-input {
+	position: relative;
+	margin-bottom: 6px;
+}
+.placeholder {
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	bottom: 1px;
+	left: 2px;
+	z-index: 1;
+	height: 20px;
+	padding: 4px;
+	font-size: 13px;
+	line-height: 20px;
+	color: #999;
+	white-space: nowrap;
+	cursor: text;
+	-webkit-transition: opacity .1s,font-size .1s;
+	-moz-transition: opacity .1s,font-size .1s;
+	-o-transition: opacity .1s,font-size .1s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.reply-time, form{
+	margin:0;
+}
+.offset0{
+	margin-left:0px !important;
+}
